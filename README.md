@@ -1,7 +1,6 @@
-# Typegraphql Prisma API
+# echo
 
-This template is for creating an Apollo server typegraphql project that use prisma. In addition, this template utilizes the 'prisma.typegraphql' generator.
-
+A quotes API
 ## Typegraphql
 
 https://typegraphql.com/
@@ -43,6 +42,3 @@ npm run dev
 This will invoke the 'predev' which generates the prisma, then starts the node server.
 
 Reference the commands in the package.json scripts for more details
-# echo
-# echo
-# echo

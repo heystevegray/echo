@@ -119,15 +119,10 @@ type Query {
   quotes(cursor: QuoteWhereUniqueInput, distinct: [QuoteScalarFieldEnum!], orderBy: [QuoteOrderByWithRelationInput!], skip: Int, take: Int, where: QuoteWhereInput): [Quote!]!
 }
 
-enum QueryMode {
-  default
-  insensitive
-}
-
 type Quote {
   author: String
   id: String!
-  link: String
+  source: String
   text: String!
 }
 
@@ -135,28 +130,28 @@ type QuoteCountAggregate {
   _all: Int!
   author: Int!
   id: Int!
-  link: Int!
+  source: Int!
   text: Int!
 }
 
 input QuoteCountOrderByAggregateInput {
   author: SortOrder
   id: SortOrder
-  link: SortOrder
+  source: SortOrder
   text: SortOrder
 }
 
 input QuoteCreateInput {
   author: String
   id: String
-  link: String
+  source: String
   text: String!
 }
 
 input QuoteCreateManyInput {
   author: String
   id: String
-  link: String
+  source: String
   text: String!
 }
 
@@ -166,35 +161,35 @@ type QuoteGroupBy {
   _min: QuoteMinAggregate
   author: String
   id: String!
-  link: String
+  source: String
   text: String!
 }
 
 type QuoteMaxAggregate {
   author: String
   id: String
-  link: String
+  source: String
   text: String
 }
 
 input QuoteMaxOrderByAggregateInput {
   author: SortOrder
   id: SortOrder
-  link: SortOrder
+  source: SortOrder
   text: SortOrder
 }
 
 type QuoteMinAggregate {
   author: String
   id: String
-  link: String
+  source: String
   text: String
 }
 
 input QuoteMinOrderByAggregateInput {
   author: SortOrder
   id: SortOrder
-  link: SortOrder
+  source: SortOrder
   text: SortOrder
 }
 
@@ -204,21 +199,21 @@ input QuoteOrderByWithAggregationInput {
   _min: QuoteMinOrderByAggregateInput
   author: SortOrder
   id: SortOrder
-  link: SortOrder
+  source: SortOrder
   text: SortOrder
 }
 
 input QuoteOrderByWithRelationInput {
   author: SortOrder
   id: SortOrder
-  link: SortOrder
+  source: SortOrder
   text: SortOrder
 }
 
 enum QuoteScalarFieldEnum {
   author
   id
-  link
+  source
   text
 }
 
@@ -228,21 +223,21 @@ input QuoteScalarWhereWithAggregatesInput {
   OR: [QuoteScalarWhereWithAggregatesInput!]
   author: StringNullableWithAggregatesFilter
   id: StringWithAggregatesFilter
-  link: StringNullableWithAggregatesFilter
+  source: StringNullableWithAggregatesFilter
   text: StringWithAggregatesFilter
 }
 
 input QuoteUpdateInput {
   author: NullableStringFieldUpdateOperationsInput
   id: StringFieldUpdateOperationsInput
-  link: NullableStringFieldUpdateOperationsInput
+  source: NullableStringFieldUpdateOperationsInput
   text: StringFieldUpdateOperationsInput
 }
 
 input QuoteUpdateManyMutationInput {
   author: NullableStringFieldUpdateOperationsInput
   id: StringFieldUpdateOperationsInput
-  link: NullableStringFieldUpdateOperationsInput
+  source: NullableStringFieldUpdateOperationsInput
   text: StringFieldUpdateOperationsInput
 }
 
@@ -252,7 +247,7 @@ input QuoteWhereInput {
   OR: [QuoteWhereInput!]
   author: StringNullableFilter
   id: StringFilter
-  link: StringNullableFilter
+  source: StringNullableFilter
   text: StringFilter
 }
 
@@ -278,7 +273,6 @@ input StringFilter {
   in: [String!]
   lt: String
   lte: String
-  mode: QueryMode
   not: NestedStringFilter
   notIn: [String!]
   startsWith: String
@@ -293,7 +287,6 @@ input StringNullableFilter {
   in: [String!]
   lt: String
   lte: String
-  mode: QueryMode
   not: NestedStringNullableFilter
   notIn: [String!]
   startsWith: String
@@ -311,7 +304,6 @@ input StringNullableWithAggregatesFilter {
   in: [String!]
   lt: String
   lte: String
-  mode: QueryMode
   not: NestedStringNullableWithAggregatesFilter
   notIn: [String!]
   startsWith: String
@@ -329,7 +321,6 @@ input StringWithAggregatesFilter {
   in: [String!]
   lt: String
   lte: String
-  mode: QueryMode
   not: NestedStringWithAggregatesFilter
   notIn: [String!]
   startsWith: String

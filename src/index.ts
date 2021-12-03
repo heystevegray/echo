@@ -29,6 +29,7 @@ async function main() {
         healthCheckPath: '/api/health',
     });
     const { port } = await server.listen(process.env.APP_PORT || 4000);
+
     console.log(`GraphQL Server is listening on http://localhost:${port}/graphql`);
 }
 

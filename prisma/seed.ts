@@ -1,52 +1,37 @@
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient, Quote } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
+const quotes: Omit<Quote, "id">[] = [
+  {
+    text: "The greatest discovery of any generation is that human beings can alter their lives by altering the attitudes of their minds.",
+    author: 'Albert Schweitzer',
+    source: "https://www.antarcticajournal.com/albert-schweitzer-quote-attitudes-of-the-mind/",
+  },
+  {
+    text: "I have no special talent. I am only passionately curious.",
+    author: 'Albert Einstein',
+    source: "https://wisdomquotes.com/famous-quotes/",
+  },
+  {
+    text: "If you judge people, you have no time to love them.",
+    author: 'Mother Teresa',
+    source: "https://wisdomquotes.com/famous-quotes/",
+  },
+  {
+    text: "Yeah, I have a lot of questions. Number one: how dare you?",
+    author: 'Kelly Kapoor',
+    source: "https://quotecatalog.com/quotes/tv/the-office/page/2",
+  }
+]
+
 async function main() {
-  await prisma.post.deleteMany({});
-  await prisma.user.deleteMany({});
-  const user1 = await prisma.user.create({
-    data: {
-      email: "alice@prisma.io",
-      name: "Alice",
-      posts: {
-        create: [
-          {
-            title: "Join us for Prisma Day 2019 in Berlin",
-            content: "https://www.prisma.io/day/",
-            published: true,
-          },
-          {
-            title: "Join us for Prisma Day 2020 in Berlin",
-            content: "https://www.prisma.io/day/",
-            published: false,
-          },
-        ],
-      },
-    },
-  });
-  const user2 = await prisma.user.create({
-    data: {
-      email: "bob@prisma.io",
-      name: "Bob",
-      posts: {
-        create: [
-          {
-            title: "Subscribe to GraphQL Weekly for community news",
-            content: "https://graphqlweekly.com/",
-            published: true,
-          },
-          {
-            title: "Follow Prisma on Twitter",
-            content: "https://twitter.com/prisma",
-            published: false,
-          },
-        ],
-      },
-    },
+  await prisma.quote.deleteMany({});
+  await prisma.quote.createMany({
+    data: quotes
   });
 
-  console.log({ user1, user2 });
+  console.log("Seeded data.");
 }
 
 main()
